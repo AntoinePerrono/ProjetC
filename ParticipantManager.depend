@@ -1,0 +1,135 @@
+# depslib dependency file v1.0
+1638174549 source:c:\users\aspire\documents\work\participantmanager\list.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+
+1638225712 source:c:\users\aspire\documents\work\participantmanager\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+
+1638218966 c:\users\aspire\documents\work\participantmanager\list.h
+
+1638174880 source:c:\users\aspire\documents\work\participantmanager\file.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+
+1638024367 c:\users\aspire\documents\work\participantmanager\file.h
+
+1638224684 c:\users\aspire\documents\work\participantmanager\manage.h
+
+1638219460 c:\users\aspire\documents\work\participantmanager\print.h
+
+1638225902 source:c:\users\aspire\documents\work\participantmanager\manage.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+
+1638224419 source:c:\users\aspire\documents\work\participantmanager\print.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+
+1638178848 source:c:\users\aspire\documents\work\participantmanager\menu.c
+
+1638308270 source:c:\users\maxime\desktop\participantmanager\file.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638279004 c:\users\maxime\desktop\participantmanager\list.h
+
+1638294119 c:\users\maxime\desktop\participantmanager\file.h
+
+1638301933 c:\users\maxime\desktop\participantmanager\manage.h
+
+1638261941 c:\users\maxime\desktop\participantmanager\print.h
+
+1638264287 source:c:\users\maxime\desktop\participantmanager\list.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638307311 source:c:\users\maxime\desktop\participantmanager\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638178850 source:c:\users\maxime\desktop\participantmanager\menu.c
+
+1638307466 source:c:\users\maxime\desktop\participantmanager\print.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638306261 source:c:\users\maxime\desktop\participantmanager\manage.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638279892 c:\users\maxime\desktop\participantmanager\navigation.h
+
+1638308334 source:c:\users\maxime\desktop\participantmanager\navigation.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
