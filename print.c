@@ -75,7 +75,7 @@ void agePartPrint(int min, int max, struct Node *head) {
 	ageMax = max;
 
 	if (min > max) {
-		printf("ERREUR ! min : %d > max : %d, serieusement ?\n", min, max);
+		printf("ERREUR ! min : %d < max : %d, serieusement ?\n", min, max);
 		ageMin = max;
 		ageMax = min;
 		printf("Je vous en veux pas, j'ai inverse les valeurs pour vous\n");
