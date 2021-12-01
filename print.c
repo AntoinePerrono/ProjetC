@@ -11,6 +11,13 @@
 #include "print.h"
 #include "navigation.h"
 
+
+/*
+*   Nom : headerTabPrint
+*   Usage : En-tête du tableau des participants
+*   Parametères : void
+*   Retour : void
+*/
 void headerTabPrint(void){
     printf("\n");
 	printf("Dossard    Nom                 Prenom               Genre Naissance Temps\n");
@@ -18,10 +25,11 @@ void headerTabPrint(void){
 }
 
 /*
-*   Name : listPrint
-*   Usage : Print the list of participants
-*   Parameters : none
-*   Return : void
+*   Nom : listPrint
+*   Usage : Ecriture de la liste dans un fichier txt
+*   Parametères :
+* 		paramètre 1 : liste à imprimer
+*   Retour : void
 */
 void listPrint(struct Node *head) {
 	struct Node* temp = head;
@@ -34,10 +42,10 @@ void listPrint(struct Node *head) {
 }
 
 /*
-*   Name : printParticipant
-*   Usage : Print a participant
-*   Parameters : structure PARTICPANT -> all stuctures are printed
-*   Return : void
+*   Nom : printParticipant
+*   Usage : Affichage d'un participant
+*   Parametères : participant
+*   Retour : void
 */
 void participantPrint(PARTICIPANT Participant) {
     printf("%8s %20s %20s %5s %02d/%02d/%02d\t%02dh%02dm%02ds\n",
@@ -51,7 +59,15 @@ void participantPrint(PARTICIPANT Participant) {
     printf("\n");
 }
 
-
+/*
+*   Nom : agePartPrint
+*   Usage : Affichage des participant dans une tranche d'âge choisie
+*   Parametères : 
+* 		paramètre 1 : entier âge min
+* 		paramètre 2 : entier âge max
+* 		paramètre 3 : liste dans laquelle faire la recherche 
+*   Retour : void
+*/
 void agePartPrint(int min, int max, struct Node *head) {
 
 	struct Node* temp = head;
@@ -65,21 +81,16 @@ void agePartPrint(int min, int max, struct Node *head) {
                 participantPrint(temp->Participant);
         }
 
-        /*
-		if ( ((2021 - temp->Participant.Birth.BirthYear) >= min)
-            && ((2021 - temp->Participant.Birth.BirthYear) <= max)) {
-                participantPrint(temp->Participant);
-        }
-        */
 		temp = temp->next;
 	}
 	linePrint();
 }
+
 /*
-*   Name : printLogo
-*   Usage : Print best header logo
-*   Parameters : none
-*   Return : void
+*   Nom : printLogo
+*   Usage : Affichage du logo
+*   Parametères : void
+*   Retour : void
 */
 
 void logoPrint(void){
@@ -92,20 +103,20 @@ void logoPrint(void){
 }
 
 /*
-*   Name : printLine
-*   Usage : Print a super line
-*   Parameters : none
-*   Return : void
+*   Nom : linePrint
+*   Usage : Affichage d'une ligne
+*   Parametères : void
+*   Retour : void
 */
 void linePrint(void){
     printf("\n--------------------------------------------------------------------------------\n");
 };
 
 /*
-*   Name : clearCmd
-*   Usage : Clean the cmd
-*   Parameters : none
-*   Return : void
+*   Nom : clearCmd
+*   Usage : Nettoyage du terminal
+*   Parametères : void
+*   Retour : void
 */
 void clearCmd(void){
     system("cls");
