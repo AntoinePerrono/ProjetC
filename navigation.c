@@ -30,13 +30,14 @@ void home(void){
     printf("1. Ajouter un participant\n");
     printf("2. Modifier un participant\n");
     printf("3. Afficher la liste des participants\n");
-    printf("4. Rechercher un participant par ID ou NOM DE FAMILLE\n");
-    printf("5. Trier par ordre croissant les resultats\n");
-    printf("6. Entrer les resultats des participants\n");
-    printf("7. Cloturer les inscriptions\n");
-    printf("8. Importer un fichier\n");
-    printf("9. Sauvegarder dans un fichier\n");
-    printf("10. Quitter le programme\n");
+    printf("4. Afficher par tranche d'age choisie\n");
+    printf("5. Rechercher un participant par ID ou NOM DE FAMILLE\n");
+    printf("6. Trier par ordre croissant les resultats\n");
+    printf("7. Entrer les resultats des participants\n");
+    printf("8. Cloturer les inscriptions\n");
+    printf("9. Importer un fichier\n");
+    printf("10. Sauvegarder dans un fichier\n");
+    printf("11. Quitter le programme\n");
 }
 
 void navigate(){
@@ -74,8 +75,22 @@ void navigate(){
             listPrint(head);
             returnHome();
             break;
+		case 4:
+			clearCmd();
+			printf("AFFICHAGE DES PARTICIPANTS PAR TRANCHE D'AGE\n");
+			int min, max;
+			printf("Age min : ");
+			scanf("%d", &min);
+			printf("Age max : ");
+			scanf("%d", &max);
+			
+			agePartPrint(min, max, head);
+			
+			returnHome();
+			break;
+			
 
-        case 4:
+        case 5:
             clearCmd();
             printf("RECHERCHER UN PARTICIPANT\n");
             linePrint();
@@ -108,23 +123,23 @@ void navigate(){
                 default:
                     break;
             }
-        case 5:
+        case 6:
             clearCmd();
             bubbleSort(head);
             listPrint(head);
             returnHome();
             break;
 
-        case 6:
+        case 7:
             resultComputed(head);
             resultEnter(head);
             break;
 
-        case 7:
+        case 8:
             registrationClosed();
             break;
 
-        case 8:
+        case 9:
             clearCmd();
             printf("IMPORTER UN FICHIER TXT\n");
 
@@ -140,7 +155,7 @@ void navigate(){
 
             break;
 
-        case 9:
+        case 10:
             clearCmd();
             printf("ENREGISTRER DANS UN FICHIER TXT\n");
 
@@ -152,7 +167,7 @@ void navigate(){
             }
             returnHome();
             break;
-        case 10:
+        case 11:
             exit(0);
             printf("Une erreur s'est produite lors de la fermeture du programme");
             break;
