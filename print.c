@@ -69,6 +69,17 @@ void participantPrint(PARTICIPANT Participant) {
 *   Retour : void
 */
 void agePartPrint(int min, int max, struct Node *head) {
+	
+	int ageMin, ageMax;
+	ageMin = min;
+	ageMax = max;
+	
+	if (min > max) {
+		printf("ERREUR ! min : %d > max : %d, serieusement ?\n", min, max);
+		ageMin = max;
+		ageMax = min;
+		prrintf("Je vous en veux pas, j'ai inverse les valeurs\n");
+	}
 
 	struct Node* temp = head;
 	printf("TRI PAR TRANCHE D'AGE\nMIN : %d, MAX : %d\n", min, max);
@@ -76,14 +87,16 @@ void agePartPrint(int min, int max, struct Node *head) {
 	linePrint();
 	while(temp != NULL) {
 
-        if (age(temp->Participant.Birth) > min
-            && age(temp->Participant.Birth) < max) {
-                participantPrint(temp->Participant);
-        }
+		if (age(temp->Participant.Birth) > ageMin
+			&& age(temp->Participant.Birth) < ageMax) {
+				participantPrint(temp->Participant);
+			}
 
-		temp = temp->next;
+			temp = temp->next;
 	}
 	linePrint();
+		
+	
 }
 
 /*
