@@ -42,10 +42,10 @@ int age(BIRTHDATE birth) {
 }
 
 /*
-*   Name : birthVerif
-*   Usage : Format verification of birthdate
-*   Parameters : structure PARTICIPANT
-*   Return : value 1 : ok; value 0 : not ok
+*   Nom : birthVerif
+*   Usage : Vérification de la date de naissance
+*   Parametères : structure PARTICIPANT
+*   Retour : valeur 1 : ok; valeur 0 : not ok
 */
 int birthVerif(PARTICIPANT Participant) { //Retourne 1 si date correct sinon 0
 
@@ -60,10 +60,10 @@ int birthVerif(PARTICIPANT Participant) { //Retourne 1 si date correct sinon 0
 }
 
 /*
-*   Name : genderVerif
-*   Usage : Format verification of gender
-*   Parameters : structure PARTICIPANT -> Gender is necessary
-*   Return : value 1 : ok; value 0 : not ok
+*   Nom : genderVerif
+*   Usage : Vérification du genre
+*   Parametères : structure PARTICIPANT
+*   Retour : valeur 1 : ok; valeur 0 : not ok
 */
 int genderVerif(PARTICIPANT Participant) { // Si le genre est bon alors 1 sinon 0
 
@@ -74,10 +74,10 @@ int genderVerif(PARTICIPANT Participant) { // Si le genre est bon alors 1 sinon 
 }
 
 /*
-*   Name : resultVerif
-*   Usage : Format verification of result (time format)
-*   Parameters : structure PARTICIPANT -> Result is necessary
-*   Return : value 1 : ok; value 0 : not ok
+*   Nom : resultVerif
+*   Usage : Vérification du résultat
+*   Parametères : structure PARTICIPANT
+*   Retour : valeur 1 : ok; valeur 0 : not ok
 */
 int resultVerif(PARTICIPANT Participant) { //retourne 1  si resultat correct sinon 0
 
@@ -93,10 +93,13 @@ int resultVerif(PARTICIPANT Participant) { //retourne 1  si resultat correct sin
 
 
 /*
-*   Name : idVerif
-*   Usage : Test if an id is available
-*   Parameters : ptr of char id
-*   Return : value 1 : id received is already use; value 0 : any identical id is use
+*   Nom : idVerif
+*   Usage : Vérification de la présence d'un ID dans la liste doublement
+* 			chainée
+*   Parametères : structure PARTICIPANT
+*   Retour :
+* 			valeur 0 : aucun ID identique n'a été trouvé dans le liste
+* 			valeur 1 : un ID identique a été trouvé dans la liste
 */
 int idVerif(char *id){ //0 : aucun id trouvé, 1 : id déjà utilisé
     struct Node* temp = head;
@@ -109,6 +112,13 @@ int idVerif(char *id){ //0 : aucun id trouvé, 1 : id déjà utilisé
 	return 0;
 }
 
+/*
+*   Nom : idAttribution
+*   Usage : Génération d'un ID temporaire et stockage dans variable
+* 			globale idTmp
+*   Parametères : void
+*   Retour : void
+*/
 void idAttribution(void) {
     time_t t;
 
@@ -119,12 +129,14 @@ void idAttribution(void) {
     sprintf(idTmp, "%d", idrand);
 }
 
+
 /*
-*   Name : modifyParticipant
-*   Usage : Modification of a participant. With ID parameter, the function search
-*           the participant and suggest to modify a field
-*   Parameters : char *ID
-*   Return : value 1 : id received is already use; value 0 : any identical id is use
+*   Nom : modifyParticipant
+*   Usage : Modifier un participant
+*   Parametères :
+* 		paramètre 1 : char *ID (ID du participant)
+* 		paramètre 2 : liste sur laquelle s'effectuera la modification
+*   Retour : void
 */
 void modifyParticipant(char *id, struct Node* head){
     struct Node* tmp = head;
@@ -136,9 +148,11 @@ void modifyParticipant(char *id, struct Node* head){
     int found = 0;
     int choice = 0;
 
+	//Recherche du participant à partir de son ID
     while(tmp != NULL){
         if (strcmp(tmp->Participant.ID, id) == 0) {
             found = 1;
+            //Stockage des infos participant dans un participant temporaire
             partTmp = tmp->Participant;
         }
         tmp = tmp->next;
@@ -147,11 +161,14 @@ void modifyParticipant(char *id, struct Node* head){
 	if (found == 0) {
         printf("ID du participant non trouve\n");
 	} else {
+		// Si l'ID a été trouvé
 	    printf("Voici l'utilisateur que vous allez modifier : \n");
 	    participantPrint(partTmp);
 	    printf("\n");
-
-	    printf("Que souhaitez-vous modifier ?\n1. Nom\t2. Prenom\t3. Genre \n4. Date de naissance\t 5.temps\n Choix :");
+	    
+		//Proposition de l'information à modifier + saisie
+	    printf("Que souhaitez-vous modifier ?\n1. Nom\t2. Prenom\t3. Genre\n");
+	    printf("4. Date de naissance\t 5.temps\n Choix :");
 	    scanf("%d", &choice);
 
 	    switch (choice) {
@@ -159,7 +176,7 @@ void modifyParticipant(char *id, struct Node* head){
                 printf("%s -> ", partTmp.Lastname);
                 scanf("%s", partTmp.Lastname);
                 break;
-            case 2: //Prenom
+            case 2: //Prénom
                 printf("%s -> ", partTmp.Firstname);
                 scanf("%s", partTmp.Firstname);
                 break;
@@ -178,28 +195,36 @@ void modifyParticipant(char *id, struct Node* head){
                 printf("%02d/%02d/%02d -> ", partTmp.Birth.BirthDay,
                                              partTmp.Birth.BirthMonth,
                                              partTmp.Birth.BirthYear);
-                scanf("%d/%d/%d", &partTmp.Birth.BirthDay, &partTmp.Birth.BirthMonth, &partTmp.Birth.BirthYear);
+                scanf("%d/%d/%d", &partTmp.Birth.BirthDay,
+								  &partTmp.Birth.BirthMonth, 
+								  &partTmp.Birth.BirthYear);
 
                 while (birthVerif(partTmp) == 0) {
                     printf("Date de naissance non conforme !\n");
                     printf("%02d/%02d/%02d -> ", partTmp.Birth.BirthDay,
                                              partTmp.Birth.BirthMonth,
                                              partTmp.Birth.BirthYear);
-                    scanf("%d/%d/%d", &partTmp.Birth.BirthDay, &partTmp.Birth.BirthMonth, &partTmp.Birth.BirthYear);
+                    scanf("%d/%d/%d", &partTmp.Birth.BirthDay,
+									  &partTmp.Birth.BirthMonth,
+									  &partTmp.Birth.BirthYear);
                 }
                 break;
             case 5: //Date Naissance
                 printf("%02d:%02d:%02d -> ", partTmp.Result.hours,
                                               partTmp.Result.minutes,
                                               partTmp.Result.seconds);
-                scanf("%2d:%2d:%2d", &partTmp.Result.hours, &partTmp.Result.minutes, &partTmp.Result.seconds);
+                scanf("%2d:%2d:%2d", &partTmp.Result.hours,
+									 &partTmp.Result.minutes,
+									 &partTmp.Result.seconds);
 
                 while (resultVerif(partTmp) == 0) {
                     printf("Le temps n'est pas conforme\n");
                     printf("%02d:%02d:%02d -> ", partTmp.Result.hours,
                                               partTmp.Result.minutes,
                                               partTmp.Result.seconds);
-                    scanf("%2d:%2d:%2d", &partTmp.Result.hours, &partTmp.Result.minutes, &partTmp.Result.seconds);
+                    scanf("%2d:%2d:%2d", &partTmp.Result.hours,
+										 &partTmp.Result.minutes,
+										 &partTmp.Result.seconds);
                 }
 
                 break;
@@ -224,11 +249,14 @@ void modifyParticipant(char *id, struct Node* head){
 }
 
 /*
-*   Name : searchParticipant
-*   Usage : Search of participant with his ID or Lastname : print of the participant if found
-*   Parameters : int searchType : 1 ID, 2. Lastname
-*                structure Participant -> ID or Lastname is necessary
-*   Return : void
+*   Nom : searchParticipant
+*   Usage : Rechercher un participant avec son ID ou son nom de famille
+* 			+ affichage des participants
+*   Parametères :
+* 		paramètre 1 : int searchType (1. ID, 2. Lastname)
+* 		paramètre 2 : char *field
+* 				Chaîne de caractère du champ à chercher (ID ou Lastname)
+*   Retour : nombre de participant trouvés
 */
 int searchParticipant(int searchType, char *field){
     struct Node* temp = head;
@@ -236,7 +264,7 @@ int searchParticipant(int searchType, char *field){
     int numParticipant = 0;
 
     switch(searchType){
-        case 1:
+        case 1: // par ID
             strcpy(Target.ID, field);
             printf("Recherche par ID = %s\n", Target.ID);
             while(temp != NULL) {
@@ -248,7 +276,7 @@ int searchParticipant(int searchType, char *field){
                 temp = temp->next;
             }
             break;
-        case 2:
+        case 2: //Nom de famille
             strcpy(Target.Lastname, field);
             printf("Recherche par nom : %s\n", Target.Lastname);
             while(temp != NULL) {
@@ -267,19 +295,24 @@ int searchParticipant(int searchType, char *field){
     return numParticipant;
 }
 
+
 /*
-*   Name : addParticipant
-*   Usage : Create a new participant
-*   Parameters : non
-*   Return : void
+*   Nom : addParticipant
+*   Usage : Ajouter un participant
+*   Parametères : void
+*   Retour : void
 */
 void addParticipant(){
+	
+	//Déclaration d'un participant temporaire pour stockage des données
     PARTICIPANT newParticipant;
+    
     clearCmd();
     linePrint();
     printf("\n ENREGISTREMENT D'UN NOUVEL UTILISATEUR");
     linePrint();
 
+	//Attribution automatique d'un ID
     idAttribution();
     strcpy(newParticipant.ID, idTmp);
     while(idVerif(newParticipant.ID) != 0) {
@@ -287,10 +320,13 @@ void addParticipant(){
     }
     printf("ID OK ! ID ENREGISTRE : %s\n", newParticipant.ID);
 
+	//Saisie du nom
     printf("Nom :"); scanf("%s", newParticipant.Lastname);
 
+	//Saisie du prénom
     printf("Prenom :"); scanf("%s", newParticipant.Firstname);
 
+	//Saisie du genre
     printf("Genre (M ou F) :"); scanf("%1s", newParticipant.Gender);
     if (genderVerif(newParticipant) == 0) {
         while(genderVerif(newParticipant) != 1) {
@@ -299,6 +335,7 @@ void addParticipant(){
         }
     }
 
+	// Saisie de la date de naissance
     printf("Date de naissance (format JJ/MM/AAAA) :");
     scanf("%d/%d/%d", &newParticipant.Birth.BirthDay, &newParticipant.Birth.BirthMonth,
                       &newParticipant.Birth.BirthYear);
@@ -310,16 +347,25 @@ void addParticipant(){
                                &newParticipant.Birth.BirthYear);
     }
 
+	//Résultat par défaut 00:00:00
     newParticipant.Result.hours = 0;
     newParticipant.Result.minutes = 0;
     newParticipant.Result.seconds = 0;
 
+	//Insertion du participant temporaire à la liste
     InsertAtHead(newParticipant);
     printf("Participant ajoute !\n");
 
 }
 
-
+/*
+*   Nom : deleteParticipant
+*   Usage : Suppression d'un participant
+*   Parametères :
+* 		paramètre 1 : char *ID (ID du participant)
+* 		paramètre 2 : Chaîne dans laquel l'utilisateur sera supprimé
+*   Retour : nombre de participant trouvés
+*/
 void deleteParticipant(char *id, struct Node *head)
   {
       struct Node *temp = head;
@@ -339,7 +385,7 @@ void deleteParticipant(char *id, struct Node *head)
       }
       if(found == 0)
           printf("NOT FOUND Cant delete\n");
-      //To delete first element
+      //Supprimer premier élément
       else if (temp->prev == NULL)
       {
           head = temp->next;
@@ -347,14 +393,14 @@ void deleteParticipant(char *id, struct Node *head)
           //free(temp);
           printf("Deleted\n");
       }
-      //To delete last element
+      //Supprimer le dernier élément
       else if (temp->next == NULL)
       {
           (temp->prev)->next = NULL;
           printf("Deleted\n");
           //free(temp);
       }
-      //To delete any other element
+      //Supprimer un autre élément
       else
       {
           (temp->prev)->next = temp->next;
@@ -364,6 +410,15 @@ void deleteParticipant(char *id, struct Node *head)
       }
   }
 
+
+/*
+*   Nom : resultComputed
+*   Usage : Calcul des résultat dans la variable resultComputed de la structure RESULT
+* 			(heures, minutes, secondes) -> secondes
+*   Parametères :
+* 		paramètre 1 : liste dans laquelle sera effectuée les calculs
+*   Retour : nombres de participants pour lesquels leur résultat a été calculé
+*/
 int resultComputed(struct Node* head){
     int number = 1;
     while(head != NULL) {
@@ -377,6 +432,13 @@ int resultComputed(struct Node* head){
     return number;
 }
 
+/*
+*   Nom : bubbleSort
+*   Usage : Tri à bulles des participant
+*   Parametères :
+* 		paramètre 1 : liste triée
+*   Retour : void
+*/
 void bubbleSort(struct Node *start)
 {
 
@@ -407,7 +469,15 @@ void bubbleSort(struct Node *start)
     while (swapp);
 }
 
-
+/*
+*   Nom : resultEnter
+*   Usage : Fonction qui va permettre d'ajouter les résultats aux
+* 			participant qui n'ont pas encore de résultat renseigné
+*   Parametères :
+* 		paramètre 1 : liste dans laquelle sera entré les résultats
+* 					  des participants
+*   Retour : void
+*/
 void resultEnter(struct Node* head){
 
     PARTICIPANT partTmp;
