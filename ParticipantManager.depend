@@ -133,3 +133,80 @@
 	"print.h"
 	"navigation.h"
 
+1638377382 source:c:\users\maxime\documents\github\projetc\file.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638279004 c:\users\maxime\documents\github\projetc\list.h
+
+1638294119 c:\users\maxime\documents\github\projetc\file.h
+
+1638301933 c:\users\maxime\documents\github\projetc\manage.h
+
+1638261941 c:\users\maxime\documents\github\projetc\print.h
+
+1638279892 c:\users\maxime\documents\github\projetc\navigation.h
+
+1638377382 source:c:\users\maxime\documents\github\projetc\list.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638308798 source:c:\users\maxime\documents\github\projetc\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638377382 source:c:\users\maxime\documents\github\projetc\manage.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638377382 source:c:\users\maxime\documents\github\projetc\navigation.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
+1638377450 source:c:\users\maxime\documents\github\projetc\print.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<time.h>
+	"list.h"
+	"file.h"
+	"manage.h"
+	"print.h"
+	"navigation.h"
+
