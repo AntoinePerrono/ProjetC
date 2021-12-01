@@ -11,10 +11,11 @@
 
 
 /*
-*   Name : GetNewNode
-*   Usage : Creates a new Node
-*   Parameters : Structure PARTICIPANT
-*   Return : returns pointer of the new node
+*   Nom : GetNewNode
+*   Usage : Créer un nouveau noeud
+*   Parametères :
+* 		paramètre 1 : Participant à ajouter
+*   Retour : noeud
 */
 struct Node* GetNewNode(PARTICIPANT Participant) {
 
@@ -30,10 +31,11 @@ struct Node* GetNewNode(PARTICIPANT Participant) {
 
 
 /*
-*   Name : InsertAtHead
-*   Usage : Inserts a Node at head of doubly linked list
-*   Parameters : Structure PARTICIPANT
-*   Return : void
+*   Nom : InsertAtHead
+*   Usage : Insérer un noeud en tête d'un liste doublement chaînée
+*   Parametères :
+* 		paramètre 1 : Participant à ajouter
+*   Retour : noeud
 */
 void InsertAtHead(PARTICIPANT Participant) {
 	struct Node* newNode = GetNewNode(Participant);
