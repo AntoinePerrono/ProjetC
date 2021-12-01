@@ -62,23 +62,23 @@ void participantPrint(PARTICIPANT Participant) {
 /*
 *   Nom : agePartPrint
 *   Usage : Affichage des participant dans une tranche d'âge choisie
-*   Parametères : 
+*   Parametères :
 * 		paramètre 1 : entier âge min
 * 		paramètre 2 : entier âge max
-* 		paramètre 3 : liste dans laquelle faire la recherche 
+* 		paramètre 3 : liste dans laquelle faire la recherche
 *   Retour : void
 */
 void agePartPrint(int min, int max, struct Node *head) {
-	
+
 	int ageMin, ageMax;
 	ageMin = min;
 	ageMax = max;
-	
+
 	if (min > max) {
 		printf("ERREUR ! min : %d > max : %d, serieusement ?\n", min, max);
 		ageMin = max;
 		ageMax = min;
-		prrintf("Je vous en veux pas, j'ai inverse les valeurs\n");
+		printf("Je vous en veux pas, j'ai inverse les valeurs pour vous\n");
 	}
 
 	struct Node* temp = head;
@@ -95,8 +95,8 @@ void agePartPrint(int min, int max, struct Node *head) {
 			temp = temp->next;
 	}
 	linePrint();
-		
-	
+
+
 }
 
 /*
