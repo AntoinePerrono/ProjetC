@@ -9,102 +9,110 @@
 #include "print.h"
 #include "navigation.h"
 
+
 /*
-*   Name : readFile
-*   Usage : Read the txt file
-*   Parameters : ptr of filename
-*   Return : void
+*   Nom : readFile
+*   Usage : Lecture d'un fichier
+*   Parametères :
+* 		paramètre 1 : Nom du fichier
+* 		paramètre 2 : liste dans laquelle est importée le fichier
+*   Retour :
+* 		valeur -1 : Erreur dans l'ouverture du fichier
+* 		valeur 0 : Erreur dans le parsing du fichier
+* 		valeur 1 : Fichier importé avec succès
 */
 int readFile(char *fileName, struct Node* head)
 {
-    // open the filename passed as parameter
+    // Ouverture du fichier
     FILE *fp = fopen(fileName, "r");
-    // make a data struct to store the values from file
+    // Création d'un participant temporaire pour stockage des données
     struct Participant temp;
 
-    // error if file not exists
+    // Erreur dans l'ouverture du fichier, inexistant ?
     if (fp == NULL)
     {
         printf("ERREUR : Impossible d'ouvrir le fichier %s\n", fileName);
         return -1;
     }
 
-    // reading line by line, max 256 bytes
+    //Longueur de lecture max par ligne : max 256 bytes
     const unsigned MAX_LENGTH = 256;
     char buffer[MAX_LENGTH];
     int line = 1;
 
-    // read each line from text file
-    // in this we will read a line as a string
-    // then we will split the string using strtok to get all the fields values
+    // Lecture de chaque ligne dans le fichier
+    // comme un chaîne de caractère ensuite réutilisée pour
+    // récupérer les infos par parsing
     while (fgets(buffer, MAX_LENGTH, fp))
     {
         char *p;
-        // get id
+        // ID
         p = strtok(buffer, ",/;");
         if (p)
         {
             strcpy(temp.ID, p);
         }
-        // get lastname
+        // Lastname
         p = strtok(NULL, ",/;");
         if (p)
         {
             strcpy(temp.Lastname, p);
         }
-        // get firstname
+        // Firstname
         p = strtok(NULL, ",/;");
         if (p)
         {
             strcpy(temp.Firstname, p);
         }
-        // get gender
+        // Gender
         p = strtok(NULL, ",/;");
         if (p)
         {
             strcpy(temp.Gender, p);
         }
-        // get birth day
+        // Birth day
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Birth.BirthDay = atoi(p);
         }
-        // get birth month
+        // Birth month
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Birth.BirthMonth = atoi(p);
         }
-        // get birth month
+        // Birth year
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Birth.BirthYear = atoi(p);
         }
-        // get time hour
+        // Time hour
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Result.hours = atoi(p);
         }
-        // get time minute
+        // Time minute
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Result.minutes = atoi(p);
         }
-        // get time second
+        // Time seconde
         p = strtok(NULL, ",/;");
         if (p)
         {
             temp.Result.seconds = atof(p);
         }
-        // now add this data struct to doubly linked list head declared at the start
 
+		// Vérification de la conformité des données à ajouter
         if ( (idVerif(temp.ID)==0) && genderVerif(temp) && birthVerif(temp) && resultVerif(temp) ) {
-           InsertAtHead(temp);
+			// Insertion du participant dans la liste
+			InsertAtHead(temp);
         } else {
+			//Erreur avec le contenu du fichier
             printf("Erreur dans le fichier import : parsing impossible; line : %d\n", line);
             printf("Plusieurs raisons possibles :\n");
             printf("- ID deja existant\n");
@@ -123,15 +131,20 @@ int readFile(char *fileName, struct Node* head)
 }
 
 /*
-*   Name : writeLinkedList
-*   Usage : Write the txt file
-*   Parameters : ptr of filename
-*   Return : -1 error, 1 ok
+*   Nom : writeLinkedList
+*   Usage : Ecriture de la liste dans un fichier txt
+*   Parametères :
+* 		paramètre 1 : Nom du fichier pour l'export
+* 		paramètre 2 : liste à exporter dans un fichier
+*   Retour :
+* 		valeur -1 : Erreur dans l'ouverture du fichier
+* 		valeur 1 : Fichier exporté avec succès
 */
 int writeLinkedList(char *filename, struct Node* head){
 
     struct Node* temp = head;
 
+	// Ouverture (ou création) du fichier d'export
     FILE* file;
     file = fopen (filename, "w");
     if (file == NULL)
@@ -141,10 +154,10 @@ int writeLinkedList(char *filename, struct Node* head){
     }
 
 
-    // writing all the nodes of the linked list to the file
+    // Ecriture de tous les noeuds de la liste
     while(temp!=NULL)
     {
-        //Ecriture dans le fichier ICI
+        //Ecriture dans le fichier
         fprintf(file,"%s,%s,%s,%s,%02d/%02d/%02d,%02d/%02d/%02d;\n",
                 temp->Participant.ID,
                 temp->Participant.Lastname,
