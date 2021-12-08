@@ -47,7 +47,7 @@ void navigate(){
     char filename[LENGTH_TXT_FIELD];
 
     switch(rq) {
-        case 1:
+        case 1: //Ajouter un participant
             if (CLOSE) {
                 clearCmd();
                 printf("AJOUT D'UN PARTICIPANT\n");
@@ -59,7 +59,7 @@ void navigate(){
             }
 
             break;
-        case 2:
+        case 2: //Modifier un participant
             clearCmd();
             linePrint();
             printf("MODIFICATION D'UN PARTICIPANT");
@@ -75,7 +75,7 @@ void navigate(){
             listPrint(head);
             returnHome();
             break;
-		case 4:
+		case 4: //Affichage participant par tranche d'âge
 			clearCmd();
 			printf("AFFICHAGE DES PARTICIPANTS PAR TRANCHE D'AGE\n");
 			int min, max;
@@ -90,7 +90,7 @@ void navigate(){
 			break;
 			
 
-        case 5:
+        case 5: //Recherche d'un participant
             clearCmd();
             printf("RECHERCHER UN PARTICIPANT\n");
             linePrint();
@@ -102,7 +102,7 @@ void navigate(){
 
 
             switch(type){
-                case 1:
+                case 1: //Par ID
                     printf("RECHERCHE PAR ID\n");
                     char ID[LENGTH_ID];
                     printf("Entrez ID : ");
@@ -111,7 +111,7 @@ void navigate(){
                     returnHome();
                     break;
 
-                case 2:
+                case 2: //Par nom
                     printf("RECHERCHE PAR NOM DE FAMILLE\n");
                     char lastname[LENGTH_TXT_FIELD];
                     printf("Entrez NOM DE FAMILLE : ");
@@ -123,23 +123,23 @@ void navigate(){
                 default:
                     break;
             }
-        case 6:
+        case 6: //Affichage liste triée
             clearCmd();
             bubbleSort(head);
             listPrint(head);
             returnHome();
             break;
 
-        case 7:
+        case 7: //Entrer les résultats
             resultComputed(head);
             resultEnter(head);
             break;
 
-        case 8:
+        case 8: //Clôturer les inscriptions
             registrationClosed();
             break;
 
-        case 9:
+        case 9: //Import fichier txt
             clearCmd();
             printf("IMPORTER UN FICHIER TXT\n");
 
@@ -155,7 +155,7 @@ void navigate(){
 
             break;
 
-        case 10:
+        case 10: //Sauvegarde vers fichier txt
             clearCmd();
             printf("ENREGISTRER DANS UN FICHIER TXT\n");
 
