@@ -83,12 +83,12 @@ void navigate(){
 			scanf("%d", &min);
 			printf("Age max : ");
 			scanf("%d", &max);
-			
+
 			agePartPrint(min, max, head);
-			
+
 			returnHome();
 			break;
-			
+
 
         case 5: //Recherche d'un participant
             clearCmd();
@@ -132,7 +132,18 @@ void navigate(){
 
         case 7: //Entrer les résultats
             resultComputed(head);
-            resultEnter(head);
+
+            if (CLOSE == 0){
+                clearCmd();
+                printf("Vous devez cloturer les inscriptions pour entrer resultats\n");
+                returnHome();
+
+            } else {
+                printf("Entrez successivement les resultats des participants\n");
+                resultEnter(head);
+                writeLinkedList("data.txt", head);
+            }
+
             break;
 
         case 8: //Clôturer les inscriptions
@@ -163,7 +174,7 @@ void navigate(){
             scanf("%s", filename);
             strcat(filename, ".txt");
             if (writeLinkedList(filename, head)){
-                printf("Les donnees ont importees sans erreur dans %s\n", filename);
+                printf("Les donnees ont enregistree sans erreur dans %s\n", filename);
             }
             returnHome();
             break;

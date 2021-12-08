@@ -165,7 +165,7 @@ void modifyParticipant(char *id, struct Node* head){
 	    printf("Voici l'utilisateur que vous allez modifier : \n");
 	    participantPrint(partTmp);
 	    printf("\n");
-	    
+
 		//Proposition de l'information à modifier + saisie
 	    printf("Que souhaitez-vous modifier ?\n1. Nom\t2. Prenom\t3. Genre\n");
 	    printf("4. Date de naissance\t 5.temps\n Choix :");
@@ -196,7 +196,7 @@ void modifyParticipant(char *id, struct Node* head){
                                              partTmp.Birth.BirthMonth,
                                              partTmp.Birth.BirthYear);
                 scanf("%d/%d/%d", &partTmp.Birth.BirthDay,
-								  &partTmp.Birth.BirthMonth, 
+								  &partTmp.Birth.BirthMonth,
 								  &partTmp.Birth.BirthYear);
 
                 while (birthVerif(partTmp) == 0) {
@@ -303,10 +303,10 @@ int searchParticipant(int searchType, char *field){
 *   Retour : void
 */
 void addParticipant(){
-	
+
 	//Déclaration d'un participant temporaire pour stockage des données
     PARTICIPANT newParticipant;
-    
+
     clearCmd();
     linePrint();
     printf("\n ENREGISTREMENT D'UN NOUVEL UTILISATEUR");
@@ -486,9 +486,12 @@ void resultEnter(struct Node* head){
     partTmp.Result.minutes= 0;
     partTmp.Result.seconds = 0;
 
+    int nb = 0;
+
     while(head != NULL) {
 
         if(head->Participant.Result.resultComputed == 0){
+            nb += 1;
             printf("\n%s %s %s %u \nEntrer temps (format hh:mm:ss) -> ", head->Participant.ID,
                                                                     head->Participant.Lastname,
                                                                     head->Participant.Firstname,
@@ -501,11 +504,21 @@ void resultEnter(struct Node* head){
                                                                     head->Participant.Firstname);
                 scanf("\n%d:%d:%d", &partTmp.Result.hours, &partTmp.Result.minutes, &partTmp.Result.seconds);
             }
+
+            head->Participant.Result = partTmp.Result;
         }
 
-        head->Participant.Result = partTmp.Result;
+
         head = head->next;
 
     }
+
+    if ( nb == 0 ) {
+        printf("AUCUN RESULTAT A ENTRER, LES CANDIDATS PRESENTS DANS LA BASE ONT DEJA UN RESULTAT\n");
+    } else {
+        printf("Vous avez enregistre %d resultat(s)\n", nb);
+    }
+
+    //writeLinkedList("data.txt", head);
 
 }
