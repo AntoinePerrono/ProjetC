@@ -15,7 +15,7 @@ int main(void) {
 	head = NULL;
 
     //IMPORT POUR AVOIR DES PARTICIPANTS DEJA ENREGISTRES
-    readFile("data_import.txt", head);
+    readFile("data.txt", head);
 
     launch();
 
