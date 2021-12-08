@@ -408,6 +408,7 @@ void deleteParticipant(char *id, struct Node *head)
           printf("Deleted\n");
           //free(temp);
       }
+      writeLinkedList("data.txt", head);
   }
 
 
